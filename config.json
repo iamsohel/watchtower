@@ -1,0 +1,7 @@
+{
+    "auths": {
+        "https://hub.docker.com": {
+            "auth": "c29oZWxpeG9yYTpXZUFyRXJvQ2tzMjAyMg=="
+        }
+    }
+}

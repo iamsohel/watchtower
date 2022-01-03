@@ -1,0 +1,24 @@
+version: '3.9'
+
+services:
+  watchtower:
+    container_name: watchtower
+    restart: always
+    image: containrrr/watchtower
+    environment:
+      - WATCHTOWER_POLL_INTERVAL=30
+      - DOCKER_CONFIG=/config
+      # - WATCHTOWER_NOTIFICATIONS=email
+      # - WATCHTOWER_NOTIFICATION_EMAIL_FROM=me@server.com
+      # - WATCHTOWER_NOTIFICATION_EMAIL_TO=them@server.com
+      # - WATCHTOWER_NOTIFICATION_EMAIL_SERVER=email.server
+      # - WATCHTOWER_NOTIFICATION_EMAIL_SERVER_USER=user
+      # - WATCHTOWER_NOTIFICATION_EMAIL_SERVER_PASSWORD=
+    volumes:
+        - /var/run/docker.sock:/var/run/docker.sock
+    command: --debug true --cleanup watchtower_test_server_1
+
+  test_server:
+    image: sohelixora/node-test:latest
+    ports: 
+      - 3004:3004
